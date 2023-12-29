@@ -1,14 +1,10 @@
 package com.coderscampus.benWoodardAssignment9;
-
 import com.coderscampus.benWoodardAssignment9.domain.Recipe;
 import com.coderscampus.benWoodardAssignment9.service.FileService;
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -19,7 +15,8 @@ public class BenWoodardAssignment9Application {
 
 		FileService fileService = new FileService();
 		List<Recipe> testList = fileService.createRecipeList();
-		System.out.println(testList);
+		testList.stream()
+				.forEach(element -> System.out.println(element));
 	}
 
 }
