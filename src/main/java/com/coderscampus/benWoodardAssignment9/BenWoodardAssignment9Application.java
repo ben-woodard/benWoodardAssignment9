@@ -13,10 +13,6 @@ public class BenWoodardAssignment9Application {
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(BenWoodardAssignment9Application.class, args);
 
-		FileService fileService = new FileService();
-		List<Recipe> testList = fileService.createRecipeList();
-		testList.stream()
-				.forEach(element -> System.out.println(element));
 	}
 
 }
