@@ -13,7 +13,6 @@ public class FileService {
 
    public List<Recipe> createRecipeList() throws IOException {
         Reader recipesFile = new FileReader("recipes.txt");
-        @SuppressWarnings("deprecation")
         CSVFormat format = CSVFormat.Builder.create()
                 .setHeader()
                 .setSkipHeaderRecord(true)
