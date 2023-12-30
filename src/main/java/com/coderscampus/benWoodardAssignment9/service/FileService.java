@@ -25,11 +25,11 @@ public class FileService {
 
         Iterable<CSVRecord> recipeRecords = format.parse(recipesFile);
 
-        List<Recipe> recipesList = recordsToRecipes(recipeRecords);
-        return recipesList;
+        List<Recipe> parsedRecipes = recordsToRecipes(recipeRecords);
+        return parsedRecipes;
     }
 
-    public List<Recipe> recordsToRecipes(Iterable<CSVRecord> csvRecord) throws IOException {
+    public List<Recipe> recordsToRecipes(Iterable<CSVRecord> csvRecord)  {
         List<Recipe> recipesList = new ArrayList<>();
 
         for (CSVRecord record : csvRecord) {
