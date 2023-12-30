@@ -14,6 +14,7 @@ public class RecipeController {
 
     @Autowired
     private RecipeService recipeService;
+
     @GetMapping("/all-recipes")
     private List<Recipe> allRecipes() throws IOException {
         List<Recipe> recipes = recipeService.postAllRecipes();
