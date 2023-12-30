@@ -4,7 +4,6 @@ import com.coderscampus.benWoodardAssignment9.domain.Recipe;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 @Service
 public class FileService {
 
-    private Iterable<CSVRecord> readFile() throws IOException {
+   public List<Recipe> createRecipeList() throws IOException {
         Reader recipesFile = new FileReader("recipes.txt");
         @SuppressWarnings("deprecation")
         CSVFormat format = CSVFormat.Builder.create()
@@ -25,15 +24,15 @@ public class FileService {
                 .build();
 
         Iterable<CSVRecord> recipeRecords = format.parse(recipesFile);
-        return recipeRecords;
+
+        List<Recipe> recipesList = recordsToRecipes(recipeRecords);
+        return recipesList;
     }
 
-    public List<Recipe> createRecipeList() throws IOException {
-        FileService fileService = new FileService();
+    public List<Recipe> recordsToRecipes(Iterable<CSVRecord> csvRecord) throws IOException {
         List<Recipe> recipesList = new ArrayList<>();
-        Iterable<CSVRecord> records = fileService.readFile();
 
-        for (CSVRecord record : records) {
+        for (CSVRecord record : csvRecord) {
             Recipe recipe = new Recipe(
                     Integer.parseInt(record.get("Cooking Minutes")),
                     Boolean.parseBoolean(record.get("Dairy Free")),
@@ -52,6 +51,4 @@ public class FileService {
         }
         return recipesList;
     }
-
-
 }
