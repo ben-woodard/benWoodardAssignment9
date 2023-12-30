@@ -32,4 +32,14 @@ public class RecipeService {
                 .collect(Collectors.toList());
         return veganRecipes;
     }
+
+    public List<String> filterGlutenFreeRecipes() throws IOException {
+        List<Recipe> recipeList = fileService.createRecipeList();
+        List<String> glutenFreeRecipes = recipeList.stream()
+                .filter(recipes -> (recipes.getGlutenFree()).equals(true))
+                .map(gluten -> gluten.getTitle())
+                .collect(Collectors.toList());
+
+        return glutenFreeRecipes;
+    }
 }

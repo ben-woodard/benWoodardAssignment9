@@ -19,11 +19,15 @@ public class RecipeController {
         return allRecipes;
     }
 
-
-
     @GetMapping("/vegan-recipes")
     public List<String> veganRecipes() throws IOException {
         List<String> veganRecipes = recipeService.filterVeganRecipes();
         return veganRecipes;
+    }
+
+    @GetMapping("/gluten-free")
+    public List<String> glutenFreeRecipes() throws IOException {
+        List<String> glutenFreeRecipes = recipeService.filterGlutenFreeRecipes();
+        return glutenFreeRecipes;
     }
 }
