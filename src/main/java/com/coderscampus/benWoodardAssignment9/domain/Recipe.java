@@ -15,9 +15,6 @@ public class Recipe {
     private Boolean vegan;
     private Boolean vegetarian;
 
-    public Recipe() {
-    }
-
     public Recipe(Integer cookingMinutes, Boolean dairyFree, Boolean glutenFree, String instructions, Double preparationMinutes,
                   Double pricePerServing, Integer readyInMinutes, Integer servings, Double spoonacularScore, String title, Boolean vegan, Boolean vegetarian) {
         this.cookingMinutes = cookingMinutes;
@@ -130,21 +127,4 @@ public class Recipe {
         this.vegetarian = vegetarian;
     }
 
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "cookingMinutes=" + cookingMinutes +
-                ", dairyFree=" + dairyFree +
-                ", glutenFree=" + glutenFree +
-                ", instructions='" + instructions + '\'' +
-                ", preparationMinutes=" + preparationMinutes +
-                ", pricePerServing=" + pricePerServing +
-                ", readyInMinutes=" + readyInMinutes +
-                ", servings=" + servings +
-                ", spoonacularScore=" + spoonacularScore +
-                ", title='" + title + '\'' +
-                ", vegan=" + vegan +
-                ", vegetarian=" + vegetarian +
-                '}';
-    }
 }

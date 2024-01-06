@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class FileService {
 
-   public List<Recipe> createRecipeList() throws IOException {
+    public Iterable<CSVRecord> parseRecipeCSV() throws IOException {
         Reader recipesFile = new FileReader("recipes.txt");
         CSVFormat format = CSVFormat.Builder.create()
                 .setHeader()
@@ -22,14 +22,12 @@ public class FileService {
                 .setDelimiter(',')
                 .build();
 
-        Iterable<CSVRecord> recipeRecords = format.parse(recipesFile);
-
-        List<Recipe> parsedRecipes = recordsToRecipes(recipeRecords);
-        return parsedRecipes;
+        return format.parse(recipesFile);
     }
 
-    public List<Recipe> recordsToRecipes(Iterable<CSVRecord> csvRecord)  {
+    public List<Recipe> createRecipeList() throws IOException {
         List<Recipe> recipesList = new ArrayList<>();
+        Iterable<CSVRecord> csvRecord = parseRecipeCSV();
 
         for (CSVRecord record : csvRecord) {
             Recipe recipe = new Recipe(
