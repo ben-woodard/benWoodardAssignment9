@@ -37,8 +37,7 @@ public class RecipeService {
 
     public List<Recipe> filterGfAndVegan() throws IOException {
         return getAllRecipes().stream()
-                              .filter(Recipe::getGlutenFree)
-                              .filter(Recipe::getVegan)
+                              .filter(recipes -> recipes.getGlutenFree() && recipes.getVegan())
                               .collect(Collectors.toList());
     }
 
