@@ -42,7 +42,8 @@ public class FileService {
                     Double.parseDouble(record.get("Spoonacular Score")),
                     record.get("Title"),
                     Boolean.parseBoolean(record.get("Vegan")),
-                    Boolean.parseBoolean(record.get("Vegetarian")));
+                    Boolean.parseBoolean(record.get("Vegetarian"))
+            );
 
             recipesList.add(recipe);
         }
