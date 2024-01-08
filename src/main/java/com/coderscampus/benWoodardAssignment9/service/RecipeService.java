@@ -25,25 +25,26 @@ public class RecipeService {
 
     public List<Recipe> filterVeganRecipes() throws IOException {
         return getAllRecipes().stream()
-                              .filter(recipes -> (recipes.getVegan()))
+                              .filter(Recipe::getVegan)
                               .collect(Collectors.toList());
     }
 
     public List<Recipe> filterGlutenFreeRecipes() throws IOException {
         return getAllRecipes().stream()
-                              .filter(recipes -> recipes.getGlutenFree())
+                              .filter(Recipe::getGlutenFree)
                               .collect(Collectors.toList());
     }
 
     public List<Recipe> filterGfAndVegan() throws IOException {
         return getAllRecipes().stream()
-                              .filter(recipes -> recipes.getGlutenFree() && recipes.getVegan())
+                              .filter(Recipe::getGlutenFree)
+                              .filter(Recipe::getVegan)
                               .collect(Collectors.toList());
     }
 
     public List<Recipe> filterVegetarian() throws IOException {
         return getAllRecipes().stream()
-                              .filter(recipes -> recipes.getVegetarian())
+                              .filter(Recipe::getVegetarian)
                               .collect(Collectors.toList());
     }
 }
